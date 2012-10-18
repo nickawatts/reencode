@@ -5,7 +5,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Vector;
 
-import org.apache.commons.lang3.StringUtils;
 import org.apache.tools.ant.BuildException;
 import org.apache.tools.ant.DirectoryScanner;
 import org.apache.tools.ant.Task;
@@ -17,6 +16,7 @@ public class CharEncodingConverter extends Task {
 	private String inputEncoding;
 	private String outputEncoding;
 	private String todir;
+	private boolean verbose;
 	private CharacterEncodingConversion cec;
 	private Vector<FileSet> filesets = new Vector<FileSet>();
 
@@ -25,13 +25,13 @@ public class CharEncodingConverter extends Task {
 	}
 	
 	public void validate() {
-		if( StringUtils.isBlank(inputEncoding) ) {
+		if( inputEncoding == null || inputEncoding.isEmpty() ) {
 			throw new BuildException("inputEncoding is required.");
 		}
-		if( StringUtils.isBlank(outputEncoding) ) {
+		if( outputEncoding == null || outputEncoding.isEmpty() ) {
 			throw new BuildException("outputEncoding is required.");
 		}
-		if( StringUtils.isBlank(todir) ) {
+		if( todir == null || todir.isEmpty() ) {
 			throw new BuildException("todir is required.");
 		}
 	}
@@ -54,8 +54,10 @@ public class CharEncodingConverter extends Task {
 									 outputFile.getAbsolutePath(), 
 									 inputEncoding, outputEncoding);
 					convertedFilesCount++;
-					log("Re-encoded "+inputFile.getName()+" to " + outputFile.getPath(), 
-						LogLevel.VERBOSE.getLevel());
+					if( verbose ) {
+						log("Re-encoded "+inputFile.getName()+" to " + outputFile.getPath(), 
+							LogLevel.INFO.getLevel());
+					}
 				} catch (Exception e) {
 					log(e, LogLevel.ERR.getLevel());
 					throw new BuildException("Error processing file "+inputFile.getAbsolutePath(),	
@@ -96,5 +98,9 @@ public class CharEncodingConverter extends Task {
 
 	public void setTodir(String todir) {
 		this.todir = todir;
+	}
+
+	public void setVerbose(boolean verbose) {
+		this.verbose = verbose;
 	}
 }
