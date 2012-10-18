@@ -12,6 +12,13 @@ import org.apache.tools.ant.types.FileSet;
 import org.apache.tools.ant.types.LogLevel;
 import org.charencodingconv.CharacterEncodingConversion;
 
+/**
+ * This class implements an Ant task that supports the re-encoding of one
+ * or more text files into a new character encoding.
+ * 
+ * @author Nick Watts
+ *
+ */
 public class CharEncodingConverter extends Task {
 	private String inputEncoding;
 	private String outputEncoding;

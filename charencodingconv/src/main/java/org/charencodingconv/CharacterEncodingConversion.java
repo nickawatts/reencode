@@ -9,11 +9,20 @@ import java.nio.charset.Charset;
 import java.nio.charset.CharsetDecoder;
 import java.nio.charset.CharsetEncoder;
 
+/**
+ * This class offers a method for re-encoding a text file under a new
+ * character encoding.
+ * 
+ * @author Nick Watts
+ *
+ */
 public class CharacterEncodingConversion {
 	private final int chunkSize = 4096;
 	
 	/**
-	 * @param args
+	 * A very simple main method that can be used to re-encode a file.
+	 * @param args Four arguments are expected in the following order:
+	 * inputFile outputFile inputEncoding outputEncoding.
 	 */
 	public static void main(String[] args) throws Exception {
 		String inputFile = args[0];
@@ -25,6 +34,27 @@ public class CharacterEncodingConversion {
 		cec.reencodeFile(inputFile, outputFile, inputEncoding, outputEncoding);
 	}
 
+	/**
+	 * Take a file that is encoded as <code>inputEncoding</code> and re-encode it
+	 * as <code>outputEncoding</code>. This method is not very intelligent, passing
+	 * off any exceptions that are thrown to the caller. The classes
+	 * {@link CharsetDecoder} and {@link CharsetEncoder} are used to do the work of
+	 * re-encoding the input file. 
+	 * 
+	 * The encodings passed in as <code>inputEncoding</code> and <code>outputEncoding</code>
+	 * must be one of the strings listed in the Java API docs 
+	 * <a href="http://docs.oracle.com/javase/6/docs/api/java/nio/charset/Charset.html">here</a>.
+	 * Common and valid examples are UTF-8, ISO-8859-1 and CP1252.
+	 *  
+	 * @param inputFile The file to be re-encoded (has the encoding <code>inputEncoding</code>.
+	 * @param outputFile The re-encoded file (has the encoding <code>outputEncoding</code>.
+	 * @param inputEncoding The encoding of the <code>inputFile</code>. This method does not
+	 * verify that this encoding is correct.
+	 * @param outputEncoding The encoding to use when re-encoding the <code>inputFile</code>
+	 * as the <code>outputFile</code>.
+	 * @throws Exception Any exception thrown during processing is passed off to the caller.
+	 * @since 0.1
+	 */
 	public void reencodeFile(String inputFile, String outputFile, 
 						     String inputEncoding, String outputEncoding)
 	throws Exception
