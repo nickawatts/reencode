@@ -44,8 +44,7 @@ public class CharEncodingConverter extends Task {
 		for( FileSet fileset : filesets ) {
 			DirectoryScanner ds = fileset.getDirectoryScanner(getProject());
 			List<String> includedFiles = Arrays.asList(ds.getIncludedFiles());
-			for( String file : includedFiles ) {
-				String filename = extractFilename(file);
+			for( String filename : includedFiles ) {
 				File inputFile = new File(ds.getBasedir(), filename);
 				File outputFile = new File(todir, filename);
 				
@@ -76,12 +75,6 @@ public class CharEncodingConverter extends Task {
 		File outputDir = new File(todir);
 		outputDir.mkdirs();
 		outputDir.setWritable(true);
-	}
-
-	private String extractFilename(String file) {
-		String filename = file.replace('\\','/'); 
-		filename = filename.substring(filename.lastIndexOf("/")+1);
-		return filename;
 	}
 
 	public void addFileset(FileSet fileset) { 
