@@ -1,0 +1,1 @@
+A very simple ASCII file encoded in ANSII.

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="sample" default="reencode-japanese-dict">
+    <taskdef name="CharEncodingConverter" 
+             classname="org.charencodingconv.ant.CharEncodingConverter" 
+             classpath="charencodingconv-0.1.jar"/>
+    
+	<target name="clean">
+    	<delete dir="out" failonerror="no"/>
+    </target>
+	
+    <target name="reencode-ascii-1" depends="clean">
+        <CharEncodingConverter inputEncoding="US-ASCII"
+                               outputEncoding="ISO-8859-1"
+                               todir="out"
+        >
+            <fileset dir="../resources/samples" includes="ascii_encoding_correct.txt"/>
+        </CharEncodingConverter>
+	</target>
+
+	<target name="reencode-ascii-2" depends="reencode-ascii-1">
+        <CharEncodingConverter inputEncoding="UTF-8"
+                               outputEncoding="CP1252"
+                               todir="out"
+        >
+            <fileset dir="../resources/samples" includes="moby_dick_utf8.txt"/>
+        </CharEncodingConverter>
+	</target>
+
+	<!-- Please see http://www.edrdg.org/ for more information on the edict file.-->
+    <target name="reencode-japanese-dict" depends="reencode-ascii-2">
+        <CharEncodingConverter inputEncoding="ISO-8859-1"
+                               outputEncoding="UTF-16"
+                               todir="out"
+        >
+            <fileset dir="../resources/samples" includes="edict"/>
+        </CharEncodingConverter>
+    </target>
+</project>
