@@ -2,8 +2,8 @@
 
 <project name="sample" default="reencode-japanese-dict">
     <taskdef name="CharEncodingConverter" 
-             classname="org.charencodingconv.ant.CharEncodingConverter" 
-             classpath="charencodingconv-0.1.jar"/>
+             classname="org.reencode.tools.ant.CharEncodingConverter" 
+             classpath="reencode-0.1.jar"/>
     
 	<target name="clean">
     	<delete dir="out" failonerror="no"/>

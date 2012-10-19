@@ -2,13 +2,13 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>org.charencodingconv</groupId>
-  <artifactId>charencodingconv</artifactId>
+  <groupId>org.reencode</groupId>
+  <artifactId>reencode</artifactId>
   <version>0.1</version>
   <packaging>jar</packaging>
 
-  <name>charencodingconv</name>
-  <url>https://github.com/nickawatts/char-encoding-conv#char-encoding-conv</url>
+  <name>reencode-tools</name>
+  <url>https://github.com/nickawatts/reencode#reencode</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -34,12 +34,12 @@
   </dependencies>
   <description>A set of tools for re-encoding text files in a new character encoding. The tools include a Java API and an Apache Ant task.</description>
   <scm>
-  	<url>https://github.com/nickawatts/char-encoding-conv</url>
+  	<url>https://github.com/nickawatts/reencode</url>
   	<developerConnection>nickawatts</developerConnection>
   </scm>
   <issueManagement>
   	<system>github</system>
-  	<url>https://github.com/nickawatts/char-encoding-conv/issues</url>
+  	<url>https://github.com/nickawatts/reencode/issues</url>
   </issueManagement>
   <licenses>
   <license>

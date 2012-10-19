@@ -1,4 +1,4 @@
-package org.charencodingconv.ant;
+package org.reencode.tools.ant;
 
 import java.io.File;
 import java.util.Arrays;
@@ -10,7 +10,7 @@ import org.apache.tools.ant.DirectoryScanner;
 import org.apache.tools.ant.Task;
 import org.apache.tools.ant.types.FileSet;
 import org.apache.tools.ant.types.LogLevel;
-import org.charencodingconv.CharacterEncodingConversion;
+import org.reencode.CharacterEncodingConversion;
 
 /**
  *  Copyright 2012 Nick A. Watts
